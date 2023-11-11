@@ -58,3 +58,37 @@ exports.obtenerUsuario = async (req , res) => {
     }
 }
 
+exports.actualizarProducto = async (req, res) => {
+    try{
+    
+    
+    const { _id, producto, categoria, ubicacion, precio } = new Producto(req.body);
+    let products = await Producto.findById(req.params.id);
+    
+    
+    if(!products){
+    res.status(404).json({ msg: 'No existe el producto'});
+    }
+    
+    
+    producto._id = id;
+    products.producto = producto;
+    products.categoria = categoria;
+    products.ubicacion = ubicacion;
+    products.precio = precio;
+    
+    
+    console.log(products)
+    
+    
+    products = await Producto.findOneAndUpdate({ _id: req.params.id}, products, {new: true});
+    res.json(products);
+    
+    
+    } catch (error) {
+    console.log(error);
+    res.status(500).send('Hubo un error')
+    }
+    }
+    
+
