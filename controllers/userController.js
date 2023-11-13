@@ -89,6 +89,6 @@ exports.actualizarProducto = async (req, res) => {
     console.log(error);
     res.status(500).send('Hubo un error')
     }
-    }
+}
     
 
